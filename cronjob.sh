@@ -1,8 +1,16 @@
-rm jobs.txt
+crontab -l -u root > jobs.txt #Dump the existing cron jobs to a file
 
-crontab -l > jobs.txt #Dump the existing cron jobs to a file
-
-echo "0 12 * * * /home/vagrant/database_backup/dbbackup.sh >> /home/vagrant/database_backup/bckp.log 2>&1" >> jobs.txt
-echo "0 0 * * 7 /home/vagrant/auto_update/autoupdate.sh >> /home/vagrant/auto_update/updt.log 2>&1" >> jobs.txt
+while read -r jobs
+do
+  echo  "$jobs" >> jobs.txt
+done < mk_cronjob
 
 crontab jobs.txt
+
+sudo rm -rf ./jobs.txt
+
+rm ./mk_cronjob
+
+sudo touch ./mk_cronjob
+
+sudo chmod 666 mk_cronjob

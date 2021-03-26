@@ -1,7 +1,8 @@
 #!/bin/bash
 
 backup_date=`date +%T-%d-%m-%Y`
-
 su - root
 
-pg_dump -U root chinook > /home/vagrant/database_backup/chinook_$backup_date.sql
+pg_dumpall -U root > /home/vagrant/database_backup/psql_backup_$backup_date.sql
+
+#pg_dump -U root <DATABASE> > /home/vagrant/database_backup/<DATABASE>_$backup_date.sql

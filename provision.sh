@@ -28,13 +28,19 @@ sudo yes | cp -rf /vagrant/autoupdate.sh ./
 cd ../
 
 sudo yes | cp -rf /vagrant/cronjob.sh ./
+sudo chmod 555 cronjob.sh
+
+sudo yes | cp -rf /vagrant/mk_cronjob ./
+sudo chmod 666 mk_cronjob
+
+sudo yes | cp -rf /vagrant/new_cronjob.sh ./
+sudo chmod 555 new_cronjob.sh
 
 sudo chown -R vagrant:vagrant ./database_backup
+
 sudo chown -R vagrant:vagrant ./auto_update
 
 sudo cp -rf /vagrant/root /var/spool/cron/crontabs/
 sudo chmod 600 /var/spool/cron/crontabs/root
 
 sudo bash cronjob.sh
-
-

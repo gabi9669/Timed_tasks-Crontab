@@ -1,0 +1,2 @@
+* * * * * /home/vagrant/database_backup/dbbackup.sh >> /home/vagrant/database_backup/bckp.log 2>&1
+* * * * 7 /home/vagrant/auto_update/autoupdate.sh >> /home/vagrant/auto_update/updt.log 2>&1
